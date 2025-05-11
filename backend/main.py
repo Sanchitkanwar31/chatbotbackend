@@ -10,6 +10,13 @@ load_dotenv()
 
 # FastAPI app instance
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins; replace with frontend URL for production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Function to query Gemini for chatbot responses
 def get_response_from_gemini(prompt: str) -> str:
